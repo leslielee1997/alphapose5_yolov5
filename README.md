@@ -1,3 +1,57 @@
+# alphapose5_yolov5
+
+### alphapose(0.5.0)+yolov5(6.1)
+
+###### Conda install
+
+```
+### install alphapose（0.5.0）###
+conda create -n env_name python=3.7
+conda activate env_name
+conda install cudatoolkit=10.1
+conda install cudnn=7.6
+pip install torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+conda install Cpython
+conda install git
+###only windows###
+python -m pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+##################
+python -m pip install git+https://github.com/yanfengliu/cython_bbox.git
+cd ./alphapose_yolov5
+python setup.py build develop --user
+cd ./detector/yolov5
+###install yolov5 evs###
+pip install -r requirements.txt
+```
+
+Refer to the official project to download the weight and configuration and put them in the corresponding folder.
+
+alphapose：https://github.com/MVIG-SJTU/AlphaPose
+
+yolov5：https://github.com/ultralytics/yolov5
+
+###### Get_started
+pic:
+
+```
+python scripts/demo_inference.py --cfg configs/coco/resnet/256x192_res50_lr1e-3_1x.yaml --checkpoint pretrained_models/fast_res50_256x192.pth --indir examples/demo/ --vis --showbox --sp -save_img  --vis_fast  --detector yolov5
+```
+
+webcam
+
+```
+python scripts/demo_inference.py --cfg configs/coco/resnet/256x192_res50_lr1e-3_1x.yaml --checkpoint pretrained_models/fast_res50_256x192.pth --outdir examples/res --vis --vis_fast --webcam 0
+```
+
+if u want to use yolov3-spp [*default:yolov5*]
+
+```
+--detector yolo
+```
+
+
+
+
 
 <div align="center">
     <img src="docs/logo.jpg", width="400">
